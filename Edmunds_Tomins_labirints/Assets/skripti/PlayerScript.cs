@@ -20,6 +20,6 @@ public class PlayerScript : MonoBehaviour
     private void OnGUI()
     {
 
-    	GUI.Label(new Rect(10,10,100,20), "Rezultāts : " + points);
+    	GUI.Label(new Rect(10,10,700,20), "EXTRA COINS : " + points);
     }
 }
