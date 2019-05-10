@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CoinScript : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-   
+public class CoinScript : MonoBehaviour {
+    public Text text;
+
+    // Use this for initialization
+    void Start () {
         
     }
 
@@ -17,13 +17,15 @@ public class CoinScript : MonoBehaviour
        transform.Rotate(90 * Time.deltaTime, 0, 0); 
     }
 
-    private void OnTriggerEnter(Collider other) {
-
-    	if (other.name == "Player") 
-    	{
-    		other.GetComponent<PlayerScript>().points++;
-    		//Add 1 to points
-    		Destroy(gameObject);
-    	}
+    private void OnTriggerEnter(Collider other) //tikai piejams tad, ja collider ir set to trigger
+    {
+        if (other.tag == "Player")
+        {
+            CounterSkript.instance.currentAmount += 1;
+            text.text = CounterSkript.instance.currentAmount.ToString();
+            Debug.Log(CounterSkript.instance.currentAmount);
+            Destroy(gameObject);
+        }
     }
+
 }
